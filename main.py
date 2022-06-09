@@ -24,8 +24,6 @@ def check_game():
         print("Rock beats Scissors. Computer wins.")
     elif player_choice == 's' and computer_choice.lower() == 'p':
         print("Scissors beat Paper. Player wins.")
-    else:
-        print('You entered an invalid input.')
 
 
 print("ROCK 🤜🏻 - PARER 🖐🏻 - SCISSORS ✌\n    Welcome to the game of Rock, Paper, Scissors.\n    Input 'r' for Rock,"
@@ -35,13 +33,16 @@ game_on = True
 while game_on:
 
     computer_choice = random.choice(options_list)
-    prompt = input("Press 'y' to start the game and 'n' to stop it: ").lower()
+    prompt = input("Input 'y' to start the game and 'n' to stop it: ").lower()
     print("")
 
     if prompt == "y":
         player_choice = input("Rock(r), Paper(p) or Scissors(s)? ").lower()
-        print(f"\nPlayer ({options[player_choice.upper()]}) : CPU ({options[computer_choice]})\n")
-        check_game()
+        if player_choice == "r" or player_choice == "p" or player_choice == "s":
+            print(f"\nPlayer ({options[player_choice.upper()]}) : CPU ({options[computer_choice]})\n")
+            check_game()
+        else:
+            print("\nThat is not part of the options, please pick the correct option.")
     elif prompt == "n":
         game_on = False
     else:
